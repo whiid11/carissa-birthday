@@ -224,11 +224,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const track = TRACKS[currentTrackIndex];
     if (!track) return;
 
-    // Set audio source
-    const audioSrc = track.previewUrl || 'assets/audio/song.m4a';
-    if (globalAudio.src !== audioSrc && !globalAudio.src.endsWith(audioSrc)) {
-      globalAudio.src = audioSrc;
-    }
+    const audioSrc = track.previewUrl || 'assets/audio/track_1.m4a';
+    
+    // Smooth source swap
+    globalAudio.pause();
+    globalAudio.src = audioSrc;
+    globalAudio.load();
 
     const playPromise = globalAudio.play();
     if (playPromise !== undefined) {
@@ -238,8 +239,13 @@ document.addEventListener('DOMContentLoaded', () => {
           updatePlayerUI();
         })
         .catch(err => {
-          console.log('Autoplay prevented or audio error:', err);
-          isPlaying = false;
+          console.warn('Audio playback error, attempting fallback:', err);
+          if (!audioSrc.includes('track_1.m4a')) {
+            globalAudio.src = 'assets/audio/track_1.m4a';
+            globalAudio.load();
+            globalAudio.play().catch(e => console.error(e));
+          }
+          isPlaying = true;
           updatePlayerUI();
         });
     }
@@ -249,12 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isPlaying) {
       globalAudio.pause();
       isPlaying = false;
+      updatePlayerUI();
     } else {
-      globalAudio.play().then(() => {
-        isPlaying = true;
-      }).catch(err => console.log(err));
+      playTrack(currentTrackIndex);
     }
-    updatePlayerUI();
   }
 
   function nextTrack() {
@@ -267,10 +271,20 @@ document.addEventListener('DOMContentLoaded', () => {
     playTrack(currentTrackIndex);
   }
 
-  // Audio Event Listeners
+  // Audio Event Listeners with Fallback Protection
   globalAudio.addEventListener('ended', nextTrack);
   globalAudio.addEventListener('play', () => { isPlaying = true; updatePlayerUI(); });
   globalAudio.addEventListener('pause', () => { isPlaying = false; updatePlayerUI(); });
+  globalAudio.addEventListener('error', (e) => {
+    console.warn('Audio element error detected:', e);
+    if (!globalAudio.src.includes('track_1.m4a')) {
+      globalAudio.src = 'assets/audio/track_1.m4a';
+      globalAudio.load();
+      if (isPlaying) {
+        globalAudio.play().catch(err => console.error(err));
+      }
+    }
+  });
 
   btnPlayMini.addEventListener('click', togglePlay);
   btnNextMini.addEventListener('click', nextTrack);

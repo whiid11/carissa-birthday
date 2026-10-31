@@ -18,7 +18,7 @@ Website statis interaktif yang dibuat dengan penuh cinta untuk merayakan ulang t
 
 3. **3D Cover Flow Apple Music Player ("Songs that Remind Me of You"):**
    - Panggung carousel 3D melengkung dengan refleksi kaca (*reflection effect*).
-   - Menampilkan **16 lagu romantis berdurasi penuh (Full Duration)** dari playlist Spotify "Luv" lengkap dengan cover album beresolusi tinggi, kutipan novel romantis, dan pemutar audio lokal berkualitas tinggi.
+   - Menampilkan **21 lagu romantis berdurasi penuh (Full Duration)** dari playlist Spotify "Luv" lengkap dengan cover album beresolusi tinggi, kutipan novel romantis, dan pemutar audio lokal berkualitas tinggi.
    - Mendukung gesture *swipe* di layar HP, klik kartu, atau tombol panah keyboard.
 
 4. **Floating Frosted Glass Audio Bar (Apple Music Style):**

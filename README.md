@@ -11,9 +11,10 @@ Website statis interaktif yang dibuat dengan penuh cinta untuk merayakan ulang t
    - Tombol pilihan jenaka: *"Buka Suratku"* & *"Nanti Dulu"* (tombol 'Nanti Dulu' otomatis menghindar saat kursor/jari pacar Anda mencoba menyentuhnya).
    - Efek ledakan confetti, ornamen pita sutra vektor, dan musik otomatis berputar saat amplop dibuka.
 
-2. **Interactive 21st Birthday Cake (Make a Wish):**
-   - Kue ulang tahun dengan lilin angka **21** dan kobaran api menyala.
-   - Fitur tiup lilin: ketuk lilin untuk memadamkan api, memunculkan efek asap gradasi, taburan confetti emas, dan kartu permohonan (*wish card*).
+2. **Interactive 21st Birthday Cake (3D Luxury Cake Render):**
+   - Kue ulang tahun 3D vintage bertingkat (*two-tiered vintage luxury coquette cake*) dengan krim ivory bertekstur, hiasan stroberi segar berkilau, pita sutra merah anggur (*wine-red ribbons*), dan mutiara gula di atas *porcelain pedestal*.
+   - Lilin interaktif angka emas **21** dengan nyala api (*flickering flame*) yang terpasang anggun di atas kue.
+   - Fitur tiup lilin: ketuk lilin atau tombol untuk memadamkan api, memunculkan efek asap gradasi (*smoke puff*), taburan confetti warna-warni, animasi selebrasi kue, dan kartu doa tulus (*wish card*).
 
 3. **3D Cover Flow Apple Music Player ("Songs that Remind Me of You"):**
    - Panggung carousel 3D melengkung dengan refleksi kaca (*reflection effect*).

@@ -1437,103 +1437,95 @@ button {
 }
 
 .vintage-parchment-paper {
-  background-color: #ebd7b2;
-  background-image: url('assets/images/vintage_parchment_base.jpg');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background: var(--color-cream-paper);
   max-width: 760px;
   margin: 0 auto;
-  padding: 85px 70px 130px 70px;
-  border-radius: 4px;
+  padding: 60px 50px;
+  border-radius: var(--radius-sm);
   box-shadow: 
-    0 10px 30px rgba(65, 35, 15, 0.22),
-    0 25px 60px rgba(59, 7, 16, 0.25),
-    inset 0 0 50px rgba(115, 75, 30, 0.25);
-  border: 1px solid rgba(139, 90, 43, 0.35);
+    0 2px 4px rgba(0,0,0,0.02),
+    0 15px 35px rgba(59, 7, 16, 0.08),
+    0 30px 60px rgba(59, 7, 16, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.25);
   position: relative;
-  overflow: hidden;
+  background-image: radial-gradient(#eadbc8 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
 }
 
 .letter-wax-stamp {
   position: absolute;
-  top: 26px;
-  right: 28px;
-  width: 50px;
-  height: 50px;
+  top: 30px;
+  right: 35px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #a82236, #580a16);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px dashed rgba(212, 175, 55, 0.5);
-  z-index: 6;
 }
 
 .stamp-monogram {
   font-family: var(--font-serif);
   color: var(--color-gold-glow);
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
 .parchment-ribbon {
   position: absolute;
-  top: -12px;
-  left: 36px;
+  top: -15px;
+  left: 40px;
   width: 24px;
-  height: 52px;
+  height: 50px;
   background: var(--color-wine-primary);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  z-index: 6;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .parchment-header {
-  margin-bottom: 34px;
-  position: relative;
-  z-index: 2;
+  margin-bottom: 36px;
 }
 
 .letter-pretitle {
   display: block;
   font-size: 0.85rem;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: #7a4820;
-  font-weight: 700;
+  color: var(--color-gold-accent);
+  font-weight: 600;
   margin-bottom: 6px;
 }
 
 .letter-salutation {
   font-family: var(--font-cursive);
   font-size: 3.4rem;
-  color: #4a0e17;
-  line-height: 1.15;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+  color: var(--color-wine-dark);
+  line-height: 1.1;
 }
 
 .letter-subtitle {
-  font-size: 1.05rem;
-  color: #6d4a35;
+  font-size: 1rem;
+  color: var(--color-text-muted);
   font-style: italic;
   margin-top: 4px;
 }
 
 .parchment-line {
-  width: 90px;
+  width: 80px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #8b5a2b, transparent);
+  background: var(--color-gold-accent);
   margin: 18px auto 0 auto;
+  opacity: 0.6;
 }
 
 .parchment-body {
   font-family: var(--font-serif);
   font-size: 1.18rem;
   line-height: 1.85;
-  color: #2b1419;
-  position: relative;
-  z-index: 2;
+  color: #381b22;
 }
 
 .parchment-body p {
@@ -1552,41 +1544,37 @@ button {
   padding-top: 6px;
   padding-right: 12px;
   padding-bottom: 2px;
-  color: #6c1220;
+  color: var(--color-wine-primary);
   font-weight: 700;
-  filter: drop-shadow(1px 2px 2px rgba(108, 18, 32, 0.15));
 }
 
 .letter-closing-statement {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #4a0e17;
+  color: var(--color-wine-dark);
   margin-top: 30px;
 }
 
 .parchment-footer {
-  margin-top: 35px;
-  border-top: 1px dashed rgba(120, 70, 30, 0.25);
-  padding-top: 22px;
-  position: relative;
-  z-index: 4;
+  margin-top: 40px;
+  border-top: 1px dashed rgba(108, 18, 32, 0.2);
+  padding-top: 24px;
 }
 
 .signature-block {
-  text-align: left;
-  max-width: 65%;
+  text-align: right;
 }
 
 .signature-salute {
   font-size: 0.95rem;
-  color: #6d4a35;
+  color: var(--color-text-muted);
   font-style: italic;
 }
 
 .signature-name {
   font-family: var(--font-cursive);
   font-size: 2.2rem;
-  color: #6c1220;
+  color: var(--color-wine-primary);
   margin: 4px 0;
   display: inline-flex;
   align-items: center;
@@ -1594,28 +1582,9 @@ button {
 }
 
 .signature-date {
-  font-size: 0.88rem;
-  color: #7a4820;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
   letter-spacing: 1.5px;
-  font-weight: 600;
-}
-
-/* Vintage Rose in Bottom Right (matching reference) */
-.parchment-vintage-rose {
-  position: absolute;
-  bottom: 8px;
-  right: 12px;
-  width: 145px;
-  max-width: 28%;
-  pointer-events: none;
-  z-index: 3;
-  filter: drop-shadow(0 4px 10px rgba(65, 35, 15, 0.3));
-}
-
-.rose-img {
-  width: 100%;
-  height: auto;
-  display: block;
 }
 
 /* ==============================================
@@ -2417,14 +2386,10 @@ button {
   .envelope-intro-text .recipient-title { font-size: 2.5rem; }
   .envelope-box { width: 280px; height: 180px; }
   
-  .vintage-parchment-paper { padding: 65px 26px 140px 26px; }
-  .letter-salutation { font-size: 2.3rem; }
+  .vintage-parchment-paper { padding: 40px 24px; }
+  .letter-salutation { font-size: 2.4rem; }
   .parchment-body { font-size: 1.05rem; line-height: 1.75; }
-  .letter-wax-stamp { width: 42px; height: 42px; top: 16px; right: 16px; }
-  .stamp-monogram { font-size: 1.25rem; }
-  .parchment-ribbon { width: 20px; height: 42px; top: -10px; left: 24px; }
-  .signature-block { max-width: 60%; }
-  .parchment-vintage-rose { width: 115px; bottom: 8px; right: 8px; }
+  .letter-wax-stamp { width: 42px; height: 42px; top: 15px; right: 15px; }
 
   .coverflow-wrapper { height: 320px; }
   .cf-slide { width: 190px; height: 190px; }
@@ -2453,12 +2418,6 @@ button {
 @media (max-width: 480px) {
   .hero-name { font-size: 2.8rem; }
   .polaroid-collage-grid { grid-template-columns: 1fr; max-width: 300px; margin: 30px auto 0 auto; }
-  .vintage-parchment-paper { padding: 58px 18px 135px 18px; }
-  .letter-salutation { font-size: 2.05rem; }
-  .parchment-body { font-size: 1.0rem; line-height: 1.72; }
-  .signature-block { max-width: 58%; }
-  .signature-name { font-size: 1.85rem; }
-  .parchment-vintage-rose { width: 95px; bottom: 6px; right: 6px; }
   .promise-heading { font-size: 1.55rem; }
   .promise-oath { font-size: 1.25rem; }
 }

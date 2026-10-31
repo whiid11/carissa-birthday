@@ -37,6 +37,14 @@ Website statis interaktif yang dibuat dengan penuh cinta untuk merayakan ulang t
 7. **Virtual Gift Box Surprise:**
    - Kotak kado 3D berpita emas yang bisa diketuk untuk membuka "Voucher Bahagia Tanpa Batas Seumur Hidup".
 
+8. **Interactive Fingerprint Heart & Eternal Promise (Cap Jempol Janji Setia):**
+   - Pad pemindai interaktif berornamen segel hati & sidik jari vektor dengan cincin *progress ring* melingkar.
+   - Carissa diminta menempelkan dan menahan ibu jarinya selama 3 detik:
+     - Efek getaran haptik detak jantung (*haptic feedback vibration* di ponsel).
+     - Gelombang pendaran (*ripple rings*) dan sinar laser pemindai (*scanning beam*).
+     - Begitu terkunci, terdengar denting harmonik lembut (*harmonic chime*), semburan confetti meriah, dan terbukanya **Kartu Janji Setia Abadi** bertuliskan:
+       > *"Terima kasih sudah terlahir ke dunia, Carissa. Di usiamu yang ke-21 ini, aku berjanji: tak peduli seberapa cepat dunia berubah, aku akan selalu menjadi tempatmu pulang paling hangat. Selamat ulang tahun ke-21, cinta terbaikku. Selamanya, milikmu."*
+
 ---
 
 ## 🌐 Cara 1: Deploy ke Vercel (Paling Direkomendasikan — Cepat & Otomatis)

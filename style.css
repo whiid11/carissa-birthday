@@ -1,6 +1,7 @@
 /* ==============================================================
    CSS STYLESHEET - HAPPY 21ST BIRTHDAY CARISSA PUTRI MAHARANI
    Theme: Romantic Wine & Gingham Scrapbook + 3D Apple Music Flow
+   Aesthetic: Luxury Coquette, Silk Ribbons & Elegant Vector Icons
    ============================================================== */
 
 :root {
@@ -108,8 +109,10 @@ button {
 }
 
 .section-tag {
-  display: inline-block;
-  padding: 6px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
   border-radius: var(--radius-pill);
   background: rgba(108, 18, 32, 0.08);
   color: var(--color-wine-primary);
@@ -126,6 +129,18 @@ button {
   color: var(--color-wine-dark);
   margin-bottom: 12px;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.heading-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-wine-medium);
 }
 
 .section-sub {
@@ -136,7 +151,7 @@ button {
 }
 
 /* ==============================================
-   PARTICLES CANVAS
+   PARTICLES CANVAS (LUXURY VECTORS)
    ============================================== */
 #particle-canvas-container {
   position: fixed;
@@ -146,24 +161,25 @@ button {
   overflow: hidden;
 }
 
-.floating-heart {
+.floating-vector-particle {
   position: absolute;
-  color: rgba(171, 40, 62, 0.6);
-  font-size: 18px;
-  animation: floatUp 8s linear infinite;
+  animation: floatUpVector 9s linear infinite;
   user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes floatUp {
+@keyframes floatUpVector {
   0% {
     transform: translateY(105vh) scale(0.6) rotate(0deg);
     opacity: 0;
   }
   15% {
-    opacity: 0.8;
+    opacity: 0.85;
   }
   85% {
-    opacity: 0.8;
+    opacity: 0.85;
   }
   100% {
     transform: translateY(-10vh) scale(1.1) rotate(45deg);
@@ -201,19 +217,25 @@ button {
 
 .ribbon-decor {
   position: absolute;
-  font-size: 2.4rem;
   z-index: 10;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));
 }
-.ribbon-decor.top-left { top: -20px; left: -10px; transform: rotate(-15deg); }
-.ribbon-decor.top-right { top: -20px; right: -10px; transform: rotate(15deg); }
+.ribbon-decor.top-left { top: -25px; left: -15px; transform: rotate(-15deg); }
+.ribbon-decor.top-right { top: -25px; right: -15px; transform: rotate(15deg); }
+
+.svg-coquette-bow {
+  width: 48px;
+  height: 48px;
+}
 
 .envelope-intro-text {
   margin-bottom: 24px;
 }
 
 .envelope-intro-text .sub-label {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 0.85rem;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -351,7 +373,6 @@ button {
   position: absolute;
   top: -8px;
   right: -10px;
-  font-size: 0.9rem;
 }
 
 /* Preview Paper inside envelope */
@@ -383,7 +404,13 @@ button {
   width: 80%;
 }
 .paper-line.short { width: 50%; }
-.paper-heart { font-size: 1.5rem; margin-top: 10px; }
+.paper-stamp-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  color: var(--color-wine-primary);
+}
 
 /* Decision Buttons */
 .envelope-actions {
@@ -444,6 +471,10 @@ button {
   margin-top: 14px;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 /* ==============================================
@@ -632,7 +663,9 @@ button {
 }
 
 .coquette-ribbon-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   padding: 8px 24px;
   border-radius: var(--radius-pill);
   background: #fff;
@@ -772,16 +805,20 @@ button {
 }
 
 .candle.blown-out::after {
-  content: '💨';
+  content: '';
   position: absolute;
-  top: -15px;
-  font-size: 1.2rem;
-  animation: smokePuff 1.5s ease-out forwards;
+  top: -12px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(180, 180, 180, 0.4) 60%, transparent 100%);
+  animation: smokePuff 1.6s ease-out forwards;
 }
 
 @keyframes smokePuff {
-  0% { opacity: 0.8; transform: translateY(0) scale(0.6); }
-  100% { opacity: 0; transform: translateY(-30px) scale(1.5); }
+  0% { opacity: 0.9; transform: translateY(0) scale(0.6); }
+  50% { opacity: 0.5; transform: translateY(-18px) scale(1.2); }
+  100% { opacity: 0; transform: translateY(-36px) scale(1.8); }
 }
 
 /* Cake Body */
@@ -794,15 +831,18 @@ button {
 .cake-frosting-top {
   display: flex;
   justify-content: space-around;
-  margin-bottom: -10px;
+  margin-bottom: -12px;
   position: relative;
   z-index: 4;
 }
 
 .strawberry-decor {
-  font-size: 1.6rem;
-  filter: drop-shadow(0 3px 5px rgba(0,0,0,0.15));
-  animation: bounceSoft 2s infinite ease-in-out;
+  animation: bounceSoft 2.5s infinite ease-in-out;
+}
+
+.svg-berry {
+  width: 24px;
+  height: 28px;
 }
 
 .s1 { animation-delay: 0.1s; }
@@ -920,6 +960,10 @@ button {
   letter-spacing: 1.5px;
   font-size: 0.95rem;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .wish-card h3 {
@@ -1241,6 +1285,11 @@ button {
   padding: 4px 2px;
 }
 
+.strip-footer {
+  justify-content: center;
+  gap: 6px;
+}
+
 .strip-frames {
   display: flex;
   flex-direction: column;
@@ -1549,6 +1598,9 @@ button {
   font-size: 2.2rem;
   color: var(--color-wine-primary);
   margin: 4px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .signature-date {
@@ -1599,9 +1651,10 @@ button {
   justify-content: center;
 }
 
-.gift-bow {
-  font-size: 2.5rem;
-  margin-top: -20px;
+.gift-bow-svg-wrap {
+  width: 52px;
+  height: 52px;
+  margin-top: -30px;
   filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
 }
 
@@ -1642,6 +1695,10 @@ button {
   color: var(--color-wine-medium);
   font-weight: 600;
   margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 .gift-box.opened .gift-lid {
@@ -1686,8 +1743,10 @@ button {
 }
 
 .voucher-stamp {
-  display: inline-block;
-  padding: 4px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 16px;
   border-radius: var(--radius-pill);
   background: var(--color-gold-accent);
   color: #fff;
@@ -1697,8 +1756,11 @@ button {
 }
 
 .voucher-stars {
-  margin: 10px 0;
-  font-size: 1.2rem;
+  margin: 14px 0 10px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  color: var(--color-gold-accent);
 }
 
 .voucher-title {
@@ -1736,6 +1798,9 @@ button {
   font-size: 0.95rem;
   color: var(--color-text-dark);
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .voucher-details p:last-child { margin-bottom: 0; }
 
@@ -1757,9 +1822,12 @@ button {
   position: relative;
 }
 
-.footer-coquette {
-  font-size: 1.8rem;
-  margin-bottom: 12px;
+.svg-flourish {
+  width: 140px;
+  height: 22px;
+  color: var(--color-gold-glow);
+  margin: 0 auto 16px auto;
+  display: block;
 }
 
 .footer-main {
@@ -1901,6 +1969,9 @@ button {
   color: #fff;
   font-family: var(--font-serif);
   font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .all-photos-close {
@@ -1994,7 +2065,7 @@ button {
     padding: 6px 12px;
   }
   .mini-artist { max-width: 90px; }
-  .soundwave { display: none; } /* save space on small phone screens */
+  .soundwave { display: none; }
   
   .photobooth-row { flex-direction: column; }
   .polaroid-collage-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }

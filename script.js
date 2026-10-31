@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const activeTrackQuote = document.getElementById('active-track-quote');
   const activeTrackIndex = document.getElementById('active-track-index');
   const btnPlayActive = document.getElementById('btn-play-active');
-  const playActiveIcon = document.getElementById('play-active-icon');
+  const playActiveSvg = document.getElementById('play-active-svg');
   const playActiveText = document.getElementById('play-active-text');
   const btnSpotifyActive = document.getElementById('btn-spotify-active');
   const carouselDotsContainer = document.getElementById('carousel-dots');
@@ -69,26 +69,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ==============================================
-  // 1. FLOATING HEART PARTICLES
+  // 1. FLOATING LUXURY VECTOR PARTICLES
   // ==============================================
   const particleContainer = document.getElementById('particle-canvas-container');
-  const heartSymbols = ['💖', '🌸', '✨', '🤍', '🎀', '🌹'];
+  const vectorParticles = [
+    // Delicate Heart SVG
+    `<svg viewBox="0 0 24 24" width="16" height="16" fill="rgba(171, 40, 62, 0.65)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,
+    // Luxury 4-Point Starburst SVG
+    `<svg viewBox="0 0 24 24" width="15" height="15" fill="rgba(212, 175, 55, 0.75)"><path d="M12 0L14.2 9.8L24 12L14.2 14.2L12 24L9.8 14.2L0 12L9.8 9.8L12 0Z"/></svg>`,
+    // Soft Silk Rose Petal SVG
+    `<svg viewBox="0 0 24 24" width="18" height="18" fill="rgba(230, 160, 175, 0.6)"><path d="M12 2C8 6 4 11 6 16C8 20 14 22 18 19C22 15 22 8 18 4C16 2 14 2 12 2Z"/></svg>`,
+    // Delicate Outline Heart SVG
+    `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(212, 175, 55, 0.75)" stroke-width="1.8"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
+  ];
 
-  function createFloatingHeart() {
+  function createFloatingVectorParticle() {
     if (!particleContainer) return;
-    const heart = document.createElement('div');
-    heart.className = 'floating-heart';
-    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-    heart.style.left = Math.random() * 95 + 'vw';
-    heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
-    heart.style.fontSize = (Math.random() * 12 + 14) + 'px';
-    particleContainer.appendChild(heart);
+    const particle = document.createElement('div');
+    particle.className = 'floating-vector-particle';
+    particle.innerHTML = vectorParticles[Math.floor(Math.random() * vectorParticles.length)];
+    particle.style.left = Math.random() * 95 + 'vw';
+    particle.style.animationDuration = (Math.random() * 4 + 7) + 's';
+    particleContainer.appendChild(particle);
 
     setTimeout(() => {
-      heart.remove();
-    }, 9000);
+      particle.remove();
+    }, 10000);
   }
-  setInterval(createFloatingHeart, 1200);
+  setInterval(createFloatingVectorParticle, 1100);
 
 
   // ==============================================
@@ -96,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==============================================
   function triggerConfetti() {
     if (typeof confetti === 'function') {
-      // Big celebratory blast
       confetti({
         particleCount: 80,
         spread: 70,
@@ -144,13 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (waxSeal) waxSeal.addEventListener('click', openEnvelope);
   if (btnOpen) btnOpen.addEventListener('click', openEnvelope);
 
-  // Dodging "Gak Mau" button
+  // Dodging button with playful yet elegant phrasing
   const dodgePhrases = [
-    'Eits gak bisa! 😜',
-    'Harus mau dong! ❤️',
-    'Gak boleh nolak! 🥰',
-    'Coba lagi deh 😝',
-    'Nyerah aja, klik yang kiri 💖'
+    'Eits, gak bisa',
+    'Harus mau dong',
+    'Jangan ditolak',
+    'Masa gak mau?',
+    'Ayo dibuka suratnya'
   ];
   let dodgeCount = 0;
 
@@ -198,15 +205,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isPlaying) {
       iconPlayMini.classList.add('hidden');
       iconPauseMini.classList.remove('hidden');
-      playActiveIcon.textContent = '⏸';
-      playActiveText.textContent = 'Jeda Lagu';
+      if (playActiveSvg) playActiveSvg.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+      if (playActiveText) playActiveText.textContent = 'Jeda Lagu';
       miniCover.classList.remove('paused');
       soundwave.classList.add('active');
     } else {
       iconPlayMini.classList.remove('hidden');
       iconPauseMini.classList.add('hidden');
-      playActiveIcon.textContent = '▶';
-      playActiveText.textContent = 'Putar Preview Lagu Ini';
+      if (playActiveSvg) playActiveSvg.innerHTML = '<path d="M8 5v14l11-7z"/>';
+      if (playActiveText) playActiveText.textContent = 'Putar Lagu Penuh Ini';
       miniCover.classList.add('paused');
       soundwave.classList.remove('active');
     }
@@ -311,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    blowBtnText.textContent = '✨ Lilin Telah Ditiup! Make a Wish! ✨';
+    blowBtnText.textContent = 'Lilin Telah Ditiup • Make a Wish!';
     btnBlowCandles.style.pointerEvents = 'none';
 
     setTimeout(() => {

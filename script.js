@@ -231,12 +231,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const track = TRACKS[currentTrackIndex];
     if (!track) return;
 
-    const audioSrc = track.previewUrl || 'assets/audio/track_1.m4a';
+    const targetSrc = track.previewUrl || 'assets/audio/track_1.mp3';
     
-    // Smooth source swap
-    globalAudio.pause();
-    globalAudio.src = audioSrc;
-    globalAudio.load();
+    // Instant play optimization: only swap src if changed, avoiding buffer discard
+    const isAlreadySet = globalAudio.src && (globalAudio.src.endsWith(targetSrc) || globalAudio.getAttribute('src') === targetSrc);
+    if (!isAlreadySet) {
+      globalAudio.src = targetSrc;
+    }
 
     const playPromise = globalAudio.play();
     if (playPromise !== undefined) {
@@ -247,9 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(err => {
           console.warn('Audio playback error, attempting fallback:', err);
-          if (!audioSrc.includes('track_1.m4a')) {
-            globalAudio.src = 'assets/audio/track_1.m4a';
-            globalAudio.load();
+          if (!targetSrc.includes('track_1.mp3')) {
+            globalAudio.src = 'assets/audio/track_1.mp3';
             globalAudio.play().catch(e => console.error(e));
           }
           isPlaying = true;
@@ -257,6 +257,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
   }
+
+  // Pre-warm audio buffering on first user touch anywhere on the page
+  function warmUpAudio() {
+    if (globalAudio && globalAudio.paused && !isPlaying) {
+      // Trigger background buffering without sound
+      globalAudio.load();
+    }
+  }
+  window.addEventListener('touchstart', warmUpAudio, { passive: true, once: true });
+  window.addEventListener('pointerdown', warmUpAudio, { passive: true, once: true });
 
   function togglePlay() {
     if (isPlaying) {
@@ -284,8 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
   globalAudio.addEventListener('pause', () => { isPlaying = false; updatePlayerUI(); });
   globalAudio.addEventListener('error', (e) => {
     console.warn('Audio element error detected:', e);
-    if (!globalAudio.src.includes('track_1.m4a')) {
-      globalAudio.src = 'assets/audio/track_1.m4a';
+    if (!globalAudio.src.includes('track_1.mp3')) {
+      globalAudio.src = 'assets/audio/track_1.mp3';
       globalAudio.load();
       if (isPlaying) {
         globalAudio.play().catch(err => console.error(err));

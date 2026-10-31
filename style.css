@@ -738,49 +738,116 @@ button {
   flex-direction: column;
   align-items: center;
   margin: 30px auto;
-  max-width: 380px;
+  max-width: 420px;
   cursor: pointer;
+  position: relative;
+}
+
+/* 3D Luxury Cake Scene & Card */
+.cake-3d-scene {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  margin: 10px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+.cake-3d-card {
+  position: relative;
+  width: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 20px 45px rgba(59, 7, 16, 0.14), 0 6px 18px rgba(108, 18, 32, 0.08);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.cake-3d-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px rgba(59, 7, 16, 0.2), 0 8px 24px rgba(108, 18, 32, 0.12);
+}
+
+.cake-3d-card.celebrating {
+  animation: cakeCelebrate 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 45px rgba(212, 175, 55, 0.45), 0 25px 50px rgba(59, 7, 16, 0.22);
+}
+
+@keyframes cakeCelebrate {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.04); }
+  70% { transform: scale(0.99); }
+  100% { transform: scale(1); }
+}
+
+.cake-3d-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  display: block;
+  object-fit: cover;
+  border-radius: 26px;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cake-3d-card:hover .cake-3d-img {
+  transform: scale(1.025);
+}
+
+.cake-3d-shine {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.35) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .cake-candles-wrap {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
-  gap: 28px;
-  margin-bottom: -15px;
-  z-index: 5;
+  gap: 32px;
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .candle {
   position: relative;
-  width: 36px;
-  height: 60px;
+  width: 40px;
+  height: 68px;
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
 }
 
 .candle:hover {
-  transform: scale(1.08);
+  transform: scale(1.12) translateY(-3px);
+  filter: drop-shadow(0 6px 16px rgba(212, 175, 55, 0.5));
 }
 
 .candle-wick {
   width: 3px;
-  height: 10px;
-  background: #333;
-  margin-top: -4px;
+  height: 8px;
+  background: #2a221f;
+  margin-top: -3px;
+  border-radius: 1px;
 }
 
 .candle-number {
   font-family: var(--font-serif);
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   font-weight: 700;
-  color: var(--color-gold-accent);
-  background: linear-gradient(180deg, #fff2b2, #d4af37, #997514);
+  color: #ffd700;
+  background: linear-gradient(180deg, #ffffff 0%, #ffeaa7 30%, #d4af37 70%, #8a6508 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.4));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 12px rgba(255, 215, 0, 0.45));
   line-height: 1;
 }
 
@@ -790,7 +857,7 @@ button {
   height: 26px;
   border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
   background: linear-gradient(180deg, #fff, #ffd200 40%, #ff4b00 100%);
-  box-shadow: 0 0 20px #ffbb00, 0 0 40px #ff6600;
+  box-shadow: 0 0 16px #ffbb00, 0 0 32px #ff6600, 0 0 45px rgba(255, 100, 0, 0.6);
   animation: flicker 0.6s infinite alternate ease-in-out;
   transform-origin: bottom center;
 }
@@ -807,107 +874,18 @@ button {
 .candle.blown-out::after {
   content: '';
   position: absolute;
-  top: -12px;
-  width: 16px;
-  height: 16px;
+  top: -10px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(180, 180, 180, 0.4) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(180, 180, 180, 0.4) 60%, transparent 100%);
   animation: smokePuff 1.6s ease-out forwards;
 }
 
 @keyframes smokePuff {
-  0% { opacity: 0.9; transform: translateY(0) scale(0.6); }
-  50% { opacity: 0.5; transform: translateY(-18px) scale(1.2); }
-  100% { opacity: 0; transform: translateY(-36px) scale(1.8); }
-}
-
-/* Cake Body */
-.cake-body {
-  position: relative;
-  width: 260px;
-  margin-top: 10px;
-}
-
-.cake-frosting-top {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: -12px;
-  position: relative;
-  z-index: 4;
-}
-
-.strawberry-decor {
-  animation: bounceSoft 2.5s infinite ease-in-out;
-}
-
-.svg-berry {
-  width: 24px;
-  height: 28px;
-}
-
-.s1 { animation-delay: 0.1s; }
-.s2 { animation-delay: 0.3s; }
-.s3 { animation-delay: 0.5s; }
-.s4 { animation-delay: 0.2s; }
-.s5 { animation-delay: 0.4s; }
-
-@keyframes bounceSoft {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-.cake-tier {
-  background: linear-gradient(180deg, #fff 0%, #fae8eb 50%, #f4d0d6 100%);
-  border-radius: var(--radius-sm);
-  box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 8px 20px rgba(108, 18, 32, 0.12);
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-}
-
-.tier-top {
-  width: 220px;
-  height: 60px;
-  margin: 0 auto;
-  z-index: 3;
-}
-
-.tier-frosting-drips {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 18px;
-  background: #fff;
-  border-radius: 0 0 10px 10px;
-  box-shadow: 0 3px 8px rgba(108, 18, 32, 0.08);
-}
-
-.tier-bottom {
-  width: 260px;
-  height: 80px;
-  margin-top: -8px;
-  z-index: 2;
-}
-
-.tier-ribbon {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 14px;
-  transform: translateY(-50%);
-  background: var(--color-wine-primary);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-.cake-plate {
-  width: 300px;
-  height: 16px;
-  background: #fff;
-  border-radius: 50%;
-  margin: -6px auto 0 auto;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-  border: 2px solid #ecd9c6;
+  0% { opacity: 0.95; transform: translateY(0) scale(0.6); }
+  50% { opacity: 0.5; transform: translateY(-20px) scale(1.3); }
+  100% { opacity: 0; transform: translateY(-40px) scale(2); }
 }
 
 .blow-candle-btn {

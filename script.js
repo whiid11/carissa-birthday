@@ -309,6 +309,9 @@ document.addEventListener('DOMContentLoaded', () => {
     candle1.classList.add('blown-out');
     candle2.classList.add('blown-out');
 
+    const cakeCard = document.querySelector('.cake-3d-card');
+    if (cakeCard) cakeCard.classList.add('celebrating');
+
     if (typeof confetti === 'function') {
       confetti({
         particleCount: 100,

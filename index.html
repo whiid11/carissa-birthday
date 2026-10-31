@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy 21st Birthday, Carissa Putri Maharani! 💌✨</title>
+  <meta name="description" content="A special 21st birthday website for Carissa Putri Maharani. Happy Birthday!">
+  <meta name="theme-color" content="#721422">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Happy 21st Birthday, Carissa Putri Maharani! 💖">
+  <meta property="og:description" content="A special birthday surprise made with all my love for you.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Sparkles & Heart Particles Container -->
+  <div id="particle-canvas-container"></div>
+
+  <!-- ==============================================
+       SCENE 1: THE INTERACTIVE ENVELOPE (LANDING)
+       ============================================== -->
+  <div id="envelope-screen" class="envelope-screen">
+    <div class="envelope-wrapper">
+      
+      <!-- Coquette Ribbons & Floating Hearts -->
+      <div class="ribbon-decor top-left">🎀</div>
+      <div class="ribbon-decor top-right">🎀</div>
+
+      <div class="envelope-intro-text">
+        <span class="sub-label">A Special 21st Birthday Delivery</span>
+        <h1 class="recipient-title">For Carissa Putri Maharani</h1>
+        <p class="envelope-date">01 November 2026</p>
+      </div>
+
+      <!-- The 3D Envelope -->
+      <div class="envelope-box" id="envelope-box">
+        <div class="envelope-back"></div>
+        <div class="envelope-paper-preview">
+          <div class="paper-line"></div>
+          <div class="paper-line short"></div>
+          <div class="paper-heart">💌</div>
+        </div>
+        <div class="envelope-pocket"></div>
+        <div class="envelope-flap" id="envelope-flap"></div>
+        
+        <!-- Wax Seal Button -->
+        <div class="wax-seal" id="wax-seal" title="Klik untuk membuka surat">
+          <div class="wax-seal-inner">
+            <span class="seal-letter">C</span>
+            <span class="seal-sparkle">✨</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Decision Buttons -->
+      <div class="envelope-actions">
+        <p class="action-question">Buka surat ini sekarang?</p>
+        <div class="btn-group">
+          <button id="btn-open" class="btn btn-primary">
+            <span>Mau Banget! 💖</span>
+          </button>
+          <button id="btn-dodge" class="btn btn-secondary">
+            <span>Gak Mau 😜</span>
+          </button>
+        </div>
+        <p class="action-hint">Sentuh segel lilin atau tekan tombol untuk membuka ✨</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ==============================================
+       SCENE 2 - 6: MAIN CONTENT (AFTER ENVELOPE OPEN)
+       ============================================== -->
+  <main id="main-content" class="main-content hidden">
+
+    <!-- FLOATING APPLE MUSIC FROSTED GLASS BAR -->
+    <aside id="floating-music-bar" class="floating-music-bar" aria-label="Music Player">
+      <div class="music-bar-inner">
+        <div class="mini-album-art-wrap">
+          <img id="mini-cover" src="https://i.scdn.co/image/ab67616d00001e0203769726e96538c554af7c61" alt="Album Cover" class="mini-cover spinning">
+          <div class="vinyl-hole"></div>
+        </div>
+        <div class="mini-track-info">
+          <span id="mini-title" class="mini-title">P.S. I LOVE YOU</span>
+          <span id="mini-artist" class="mini-artist">Paul Partohap</span>
+        </div>
+        
+        <!-- Animated Soundwave Bars -->
+        <div class="soundwave" id="soundwave">
+          <span class="wave-bar"></span>
+          <span class="wave-bar"></span>
+          <span class="wave-bar"></span>
+          <span class="wave-bar"></span>
+        </div>
+
+        <!-- Controls -->
+        <div class="mini-controls">
+          <button id="btn-prev-mini" class="ctrl-icon-btn" title="Lagu Sebelumnya" aria-label="Previous">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+          </button>
+          <button id="btn-play-mini" class="ctrl-icon-btn play-btn" title="Putar / Jeda" aria-label="Play/Pause">
+            <svg id="icon-play-mini" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="icon-pause-mini" class="hidden" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <button id="btn-next-mini" class="ctrl-icon-btn" title="Lagu Berikutnya" aria-label="Next">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
+          <a id="btn-spotify-direct" href="https://open.spotify.com/playlist/6hsa26em3TEvpoWmpV0Iiv?si=45487d938d6a47ca" target="_blank" rel="noopener noreferrer" class="spotify-pill-btn" title="Buka di Spotify">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.496 17.306c-.218.358-.684.47-1.042.252-2.857-1.745-6.453-2.14-10.69-1.173-.41.093-.815-.164-.908-.573-.093-.41.164-.816.573-.909 4.636-1.06 8.607-.611 11.815 1.36.358.218.47.684.252 1.043zm1.464-3.26c-.275.448-.86.59-1.308.315-3.27-2.01-8.254-2.593-12.122-1.418-.503.153-1.036-.135-1.189-.638-.153-.503.135-1.036.638-1.189 4.417-1.34 9.91-.692 13.666 1.622.448.275.59.86.315 1.308zm.126-3.41c-3.921-2.328-10.38-2.543-14.12-1.407-.603.183-1.241-.165-1.424-.768-.183-.603.165-1.241.768-1.424 4.301-1.306 11.42-1.054 15.918 1.616.544.323.722 1.032.399 1.576-.323.543-1.032.721-1.576.399z"/></svg>
+            <span>Spotify</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- SECTION 1: HERO / BIRTHDAY HEADER -->
+    <section class="section hero-section">
+      <div class="container text-center">
+        <div class="coquette-ribbon-badge">
+          <span>🎀 Carissa's 21st Milestone 🎀</span>
+        </div>
+        <h1 class="hero-title">Happy 21st Birthday,</h1>
+        <h2 class="hero-name">Carissa Putri Maharani</h2>
+        <p class="hero-date">Minggu, 01 November 2026</p>
+        <div class="gingham-divider"></div>
+        <p class="hero-quote">
+          "Hari ini, semesta bersukacita merayakan 21 tahun hadirnya jiwa paling teduh dan berharga di duniaku."
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE 21ST BIRTHDAY CAKE -->
+    <section class="section cake-section">
+      <div class="container text-center">
+        <div class="section-tag">Make A Wish</div>
+        <h2 class="section-heading">Tiup Lilin Ulang Tahunmu 🎂</h2>
+        <p class="section-sub">Tutup matamu, bisikkan satu doa paling tulus ke langit, lalu ketuk lilinnya!</p>
+
+        <!-- The Interactive Cake -->
+        <div class="cake-container" id="cake-interactive">
+          <div class="cake-candles-wrap">
+            <!-- Candle 2 -->
+            <div class="candle" id="candle-2" data-number="2">
+              <div class="candle-flame">
+                <div class="flame-core"></div>
+                <div class="flame-glow"></div>
+              </div>
+              <div class="candle-wick"></div>
+              <div class="candle-number">2</div>
+            </div>
+            <!-- Candle 1 -->
+            <div class="candle" id="candle-1" data-number="1">
+              <div class="candle-flame">
+                <div class="flame-core"></div>
+                <div class="flame-glow"></div>
+              </div>
+              <div class="candle-wick"></div>
+              <div class="candle-number">1</div>
+            </div>
+          </div>
+
+          <!-- Cake Layers -->
+          <div class="cake-body">
+            <div class="cake-frosting-top">
+              <div class="strawberry-decor s1">🍓</div>
+              <div class="strawberry-decor s2">🍓</div>
+              <div class="strawberry-decor s3">🍓</div>
+              <div class="strawberry-decor s4">🍓</div>
+              <div class="strawberry-decor s5">🍓</div>
+            </div>
+            <div class="cake-tier tier-top">
+              <div class="tier-frosting-drips"></div>
+            </div>
+            <div class="cake-tier tier-bottom">
+              <div class="tier-ribbon"></div>
+            </div>
+            <div class="cake-plate"></div>
+          </div>
+
+          <!-- Blow Prompt Pill -->
+          <button id="btn-blow-candles" class="blow-candle-btn">
+            <span class="btn-icon">💨</span>
+            <span id="blow-btn-text">Ketuk Di Sini Untuk Meniup Lilin</span>
+          </button>
+        </div>
+
+        <!-- Wish Message Card (Revealed after candles blown out) -->
+        <div id="wish-card" class="wish-card hidden">
+          <div class="wish-card-inner">
+            <div class="wish-sparkle">✨ Aamiin ya Rabbal Alamin ✨</div>
+            <h3>Permohonanmu Telah Diterbangkan ke Langit! 🕊️</h3>
+            <p>
+              "Semoga di usiamu yang ke-21 ini, setiap langkahmu dipenuhi keberkahan, senyum bahagiamu tak pernah pudar, hatimu selalu dilapangkan, dan impian-impian indahmu menjadi kenyataan. Aku akan selalu ada di sampingmu untuk melihatmu bersinar."
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: 3D COVER FLOW APPLE MUSIC PLAYER -->
+    <section class="section coverflow-section" id="coverflow-section">
+      <div class="container text-center">
+        <div class="section-tag">Our Playlist</div>
+        <h2 class="section-heading">Songs That Remind Me of You 🎵</h2>
+        <p class="section-sub">17 lagu dari playlist Spotify kita yang selalu mengiringi setiap ceritaku tentangmu</p>
+
+        <!-- 3D Cover Flow Viewport -->
+        <div class="coverflow-wrapper">
+          
+          <button id="cf-prev-btn" class="cf-nav-btn prev" aria-label="Previous Slide">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+
+          <div class="coverflow-container" id="coverflow-container">
+            <!-- Dynamic 3D Slides will be generated by script.js -->
+          </div>
+
+          <button id="cf-next-btn" class="cf-nav-btn next" aria-label="Next Slide">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+
+        </div>
+
+        <!-- Active Song Details Card (Frosted Glass) -->
+        <div class="active-track-card" id="active-track-card">
+          <div class="track-badge-count">
+            <span id="active-track-index">1</span> / 17 Lagu
+          </div>
+          <h3 id="active-track-title" class="track-name">P.S. I LOVE YOU</h3>
+          <p id="active-track-artist" class="track-artist">Paul Partohap</p>
+          <p id="active-track-album" class="track-album">Album: P.S. I LOVE YOU</p>
+
+          <blockquote id="active-track-quote" class="track-quote">
+            "Bila aku harus menuliskan kembali alasan mencintaimu, halamannya takkan pernah cukup."
+          </blockquote>
+
+          <div class="track-action-buttons">
+            <button id="btn-play-active" class="btn btn-audio-play">
+              <span id="play-active-icon">▶</span>
+              <span id="play-active-text">Putar Preview Lagu Ini</span>
+            </button>
+            <a id="btn-spotify-active" href="https://open.spotify.com/playlist/6hsa26em3TEvpoWmpV0Iiv?si=45487d938d6a47ca" target="_blank" rel="noopener noreferrer" class="btn btn-spotify-link">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.496 17.306c-.218.358-.684.47-1.042.252-2.857-1.745-6.453-2.14-10.69-1.173-.41.093-.815-.164-.908-.573-.093-.41.164-.816.573-.909 4.636-1.06 8.607-.611 11.815 1.36.358.218.47.684.252 1.043zm1.464-3.26c-.275.448-.86.59-1.308.315-3.27-2.01-8.254-2.593-12.122-1.418-.503.153-1.036-.135-1.189-.638-.153-.503.135-1.036.638-1.189 4.417-1.34 9.91-.692 13.666 1.622.448.275.59.86.315 1.308zm.126-3.41c-3.921-2.328-10.38-2.543-14.12-1.407-.603.183-1.241-.165-1.424-.768-.183-.603.165-1.241.768-1.424 4.301-1.306 11.42-1.054 15.918 1.616.544.323.722 1.032.399 1.576-.323.543-1.032.721-1.576.399z"/></svg>
+              <span>Buka di Spotify</span>
+            </a>
+          </div>
+
+          <!-- Carousel Dots Indicator -->
+          <div class="carousel-dots" id="carousel-dots"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: SCRAPBOOK PHOTO GALLERY & PHOTOBOOTHS -->
+    <section class="section gallery-section">
+      <div class="container text-center">
+        <div class="section-tag">Sweet Memories</div>
+        <h2 class="section-heading">Our Scrapbook & Photobooth 📸</h2>
+        <p class="section-sub">Kepingan senyum, canda, dan tatapan manismu yang terabadikan selamanya</p>
+
+        <!-- Photobooth Film Strips Row -->
+        <div class="photobooth-row">
+          
+          <!-- Strip 1 -->
+          <div class="photobooth-strip">
+            <div class="strip-header">
+              <span class="strip-date">01.11.2026</span>
+              <span class="strip-sticker">🎀 LOVE</span>
+            </div>
+            <div class="strip-frames">
+              <div class="film-frame" onclick="openLightbox(0)">
+                <img src="assets/photos/IMG_4500.jpg" alt="Carissa memory" loading="lazy">
+              </div>
+              <div class="film-frame" onclick="openLightbox(1)">
+                <img src="assets/photos/IMG_4501.jpg" alt="Carissa memory" loading="lazy">
+              </div>
+              <div class="film-frame" onclick="openLightbox(8)">
+                <img src="assets/photos/IMG_5682.jpg" alt="Carissa memory" loading="lazy">
+              </div>
+              <div class="film-frame" onclick="openLightbox(18)">
+                <img src="assets/photos/IMG_6161.jpg" alt="Carissa memory" loading="lazy">
+              </div>
+            </div>
+            <div class="strip-footer">
+              <span>CARISSA'S 21ST ✨</span>
+            </div>
+          </div>
+
+          <!-- Novel Quote Card 1 -->
+          <div class="scrapbook-quote-card rot-neg">
+            <div class="washi-tape top-center"></div>
+            <span class="quote-symbol">“</span>
+            <p>Di antara ribuan potret di dunia, mataku hanya selalu tahu cara mencari bahagiamu.</p>
+            <span class="quote-author">— Untuk Carissa</span>
+          </div>
+
+          <!-- Strip 2 -->
+          <div class="photobooth-strip">
+            <div class="strip-header">
+              <span class="strip-date">MEMORIES</span>
+              <span class="strip-sticker">🍒 SWEET</span>
+            </div>
+            <div class="strip-frames">
+              <div class="film-frame" onclick="openLightbox(3)">
+                <img src="assets/photos/IMG_4807.jpg" alt="Carissa memory" loading="lazy">
+              </div>
+              <div class="film-frame" onclick="openLightbox(10)">
+                <img src="assets/photos/IMG_5852.jpg" alt="Carissa memory" loading="lazy">
+              </div>
+              <div class="film-frame" onclick="openLightbox(14)">
+                <img src="assets/photos/IMG_5954.jpg" alt="Carissa memory" loading="lazy">
+              </div>
+              <div class="film-frame" onclick="openLightbox(19)">
+                <img src="assets/photos/IMG_6251.jpg" alt="Carissa memory" loading="lazy">
+              </div>
+            </div>
+            <div class="strip-footer">
+              <span>FOREVER WITH YOU 💖</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Polaroid Scattered Collage Grid -->
+        <div class="polaroid-collage-grid">
+          
+          <div class="polaroid-card rot-1" onclick="openLightbox(2)">
+            <div class="washi-tape"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/photos/IMG_4652.jpg" alt="Carissa memory" loading="lazy">
+            </div>
+            <p class="polaroid-caption">Cantiknya kamu, duniaku 💖</p>
+          </div>
+
+          <div class="polaroid-card rot-neg-2" onclick="openLightbox(4)">
+            <div class="washi-tape washi-gingham"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/photos/IMG_4836.jpg" alt="Carissa memory" loading="lazy">
+            </div>
+            <p class="polaroid-caption">Mata terindah yang pernah kutatap 💫</p>
+          </div>
+
+          <div class="polaroid-card rot-2" onclick="openLightbox(5)">
+            <div class="washi-tape"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/photos/IMG_4847.jpg" alt="Carissa memory" loading="lazy">
+            </div>
+            <p class="polaroid-caption">Tempat pulang paling nyaman 🏡</p>
+          </div>
+
+          <div class="polaroid-card rot-neg-1" onclick="openLightbox(6)">
+            <div class="washi-tape washi-wine"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/photos/IMG_5674.jpg" alt="Carissa memory" loading="lazy">
+            </div>
+            <p class="polaroid-caption">Selalu bersyukur memiliki hatimu 🌷</p>
+          </div>
+
+          <div class="polaroid-card rot-3" onclick="openLightbox(9)">
+            <div class="washi-tape"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/photos/IMG_5768.jpg" alt="Carissa memory" loading="lazy">
+            </div>
+            <p class="polaroid-caption">Dunia terasa lebih teduh saat bersamamu 🤍</p>
+          </div>
+
+          <div class="polaroid-card rot-neg-3" onclick="openLightbox(11)">
+            <div class="washi-tape washi-gingham"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/photos/IMG_5902.jpg" alt="Carissa memory" loading="lazy">
+            </div>
+            <p class="polaroid-caption">Hari yang selalu terkenang manis ☀️</p>
+          </div>
+
+          <div class="polaroid-card rot-1" onclick="openLightbox(12)">
+            <div class="washi-tape"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/photos/IMG_5903.jpg" alt="Carissa memory" loading="lazy">
+            </div>
+            <p class="polaroid-caption">Tertawa lepas bersamamu 🥰</p>
+          </div>
+
+          <div class="polaroid-card rot-neg-2" onclick="openLightbox(13)">
+            <div class="washi-tape washi-wine"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/photos/IMG_5953.jpg" alt="Carissa memory" loading="lazy">
+            </div>
+            <p class="polaroid-caption">Cantik luar dan dalam, Carissaku 🌹</p>
+          </div>
+
+          <div class="polaroid-card rot-2" onclick="openLightbox(15)">
+            <div class="washi-tape"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/photos/IMG_5986.jpg" alt="Carissa memory" loading="lazy">
+            </div>
+            <p class="polaroid-caption">Selalu ada di setiap langkahmu 🤝</p>
+          </div>
+
+          <div class="polaroid-card rot-neg-1" onclick="openLightbox(16)">
+            <div class="washi-tape washi-gingham"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/photos/IMG_6025.jpg" alt="Carissa memory" loading="lazy">
+            </div>
+            <p class="polaroid-caption">Bintang paling terang di malamku 🌟</p>
+          </div>
+
+          <div class="polaroid-card rot-3" onclick="openLightbox(20)">
+            <div class="washi-tape"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/photos/IMG_6291.jpg" alt="Carissa memory" loading="lazy">
+            </div>
+            <p class="polaroid-caption">Menjadi saksi bahagia di wajahmu 🌻</p>
+          </div>
+
+          <div class="polaroid-card rot-neg-3" onclick="openLightbox(25)">
+            <div class="washi-tape washi-wine"></div>
+            <div class="polaroid-img-wrap">
+              <img src="assets/photos/IMG_6914.jpg" alt="Carissa memory" loading="lazy">
+            </div>
+            <p class="polaroid-caption">Happy 21st Birthday, Carissa! 👑</p>
+          </div>
+
+        </div>
+
+        <!-- Button to open All 26 Photos -->
+        <div class="gallery-action-box">
+          <button id="btn-view-all-photos" class="btn btn-outline" onclick="openAllPhotosGrid()">
+            <span>Lihat Seluruh 26 Foto Kenangan 📸</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: THE MAIN LOVE LETTER (VINTAGE PARCHMENT) -->
+    <section class="section letter-section">
+      <div class="container">
+        
+        <div class="vintage-parchment-paper">
+          
+          <!-- Wax Seal on Letter Corner -->
+          <div class="letter-wax-stamp">
+            <span class="stamp-monogram">C</span>
+          </div>
+
+          <!-- Ribbon Bookmark -->
+          <div class="parchment-ribbon"></div>
+
+          <header class="parchment-header text-center">
+            <span class="letter-pretitle">Sebuah Surat Dari Lubuk Hatiku</span>
+            <h2 class="letter-salutation">Untuk Carissa Putri Maharani,</h2>
+            <p class="letter-subtitle">Di Usianya yang Memekar ke-21</p>
+            <div class="parchment-line"></div>
+          </header>
+
+          <article class="parchment-body">
+            <p class="dropcap-paragraph">
+              <span class="dropcap">D</span>i antara miliaran detik yang berdetak di semesta, ada satu hari di awal November yang selalu kurayakan dalam sunyi penuh syukur: hari ketika bumi menyambut seseorang dengan mata paling teduh dan senyum paling menenangkan.
+            </p>
+
+            <p>
+              <strong>Carissa, selamat menginjak usia 21 tahun.</strong>
+            </p>
+
+            <p>
+              Katanya, bertumbuh dewasa sering kali membuat dunia terasa terlalu berisik dan terburu-buru. Namun bagiku, keberadaanmu selalu seperti bab paling tenang dalam sebuah buku yang ingin kubaca berulang kali—tempat di mana kata <em>“pulang”</em> bukan lagi sebuah alamat, melainkan sebuah pelukan.
+            </p>
+
+            <p>
+              Terima kasih sudah melangkah sejauh ini dengan segala keanggunan, ketegaran, dan kebaikan hatimu yang tak pernah habis. Terima kasih telah membagi tawamu, cerita-cerita kecilmu, bahkan hari-hari lelahmu denganku. Memilikimu dalam hidupku adalah keajaiban paling indah yang selalu kusyukuri pada Tuhan setiap hari.
+            </p>
+
+            <p>
+              Di lembar hidupmu yang ke-21 ini, aku mendoakan semoga semesta senantiasa berbaik hati menjagamu. Semoga setiap langkahmu diringankan, pundakmu dikuatkan, dan senyum manis itu tak pernah kehilangan sinarnya.
+            </p>
+
+            <p>
+              Apa pun badai yang mungkin bertamu esok hari, berjanjilah untuk selalu ingat: kamu tidak pernah berjalan sendirian. Ada aku yang akan selalu memilihmu, mendengarkanmu, dan mencintaimu—kemarin, hari ini, dan di setiap lembar kisah yang belum kita tuliskan.
+            </p>
+
+            <p class="letter-closing-statement">
+              Selamat ulang tahun, duniaku, bahagiaku, Carissaku.
+            </p>
+          </article>
+
+          <footer class="parchment-footer">
+            <div class="signature-block">
+              <p class="signature-salute">Tertulis dengan segenap cinta yang tak pernah selesai,</p>
+              <p class="signature-name">Yang Selalu Menyayangimu ❤️</p>
+              <p class="signature-date">01 November 2026</p>
+            </div>
+          </footer>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 6: VIRTUAL GIFT BOX SURPRISE -->
+    <section class="section gift-section">
+      <div class="container text-center">
+        <div class="section-tag">Final Surprise</div>
+        <h2 class="section-heading">Kado Spesial Untukmu 🎁</h2>
+        <p class="section-sub">Ada satu hal kecil lagi yang sudah kusiapkan khusus untuk gadisku</p>
+
+        <!-- The 3D Interactive Gift Box -->
+        <div class="gift-box-wrapper" id="gift-box-wrapper" onclick="openGiftBox()">
+          <div class="gift-box" id="gift-box">
+            <div class="gift-lid" id="gift-lid">
+              <div class="gift-bow">🎀</div>
+            </div>
+            <div class="gift-body">
+              <div class="gift-ribbon-vertical"></div>
+              <div class="gift-ribbon-horizontal"></div>
+            </div>
+          </div>
+          <p class="gift-hint" id="gift-hint">Ketuk kado ini untuk membukanya! ✨</p>
+        </div>
+
+        <!-- The Revealed Golden Ticket / Voucher -->
+        <div class="golden-voucher-modal hidden" id="golden-voucher">
+          <div class="voucher-card">
+            <div class="voucher-stamp">GOLDEN PASS 👑</div>
+            <div class="voucher-stars">✨ ✨ ✨</div>
+            <h3 class="voucher-title">VOUCHER BAHAGIA TANPA BATAS</h3>
+            <p class="voucher-issued">Khusus Diterbitkan Untuk:</p>
+            <h4 class="voucher-name">Carissa Putri Maharani</h4>
+            <div class="voucher-details">
+              <p>✔ Berlaku seumur hidup tanpa batas kadaluarsa</p>
+              <p>✔ Pelukan tanpa syarat di saat lelah</p>
+              <p>✔ Pendengar setia untuk seluruh keluh kesahmu</p>
+              <p>✔ Menemani di setiap langkah dan impianmu</p>
+            </div>
+            <div class="voucher-footer">
+              <p><em>“I love you to the moon and back, today and forever.”</em></p>
+            </div>
+            <button class="btn btn-primary" onclick="closeVoucher()">Simpan di Hati 💖</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer text-center">
+      <div class="container">
+        <div class="footer-coquette">🎀 💌 🎀</div>
+        <p class="footer-main">Dedicated with all my heart to <strong>Carissa Putri Maharani</strong></p>
+        <p class="footer-sub">Celebrating 21 Beautiful Years • 01 November 2026</p>
+        <div class="footer-links">
+          <a href="https://open.spotify.com/playlist/6hsa26em3TEvpoWmpV0Iiv?si=45487d938d6a47ca" target="_blank" rel="noopener noreferrer" class="footer-spotify-btn">
+            Dengarkan Playlist "Luv" di Spotify 🎧
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+
+  <!-- ==============================================
+       MODALS: LIGHTBOX & ALL PHOTOS GRID
+       ============================================== -->
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-modal hidden" onclick="closeLightboxOnBackdrop(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close-btn" onclick="closeLightbox()" aria-label="Close">✕</button>
+      <button class="lightbox-nav-btn prev" onclick="navigateLightbox(-1)" aria-label="Previous">❮</button>
+      <div class="lightbox-img-container">
+        <img id="lightbox-img" src="" alt="Full view memory">
+        <div class="lightbox-caption-bar">
+          <span id="lightbox-counter">1 / 26</span>
+          <p id="lightbox-caption">Caption</p>
+        </div>
+      </div>
+      <button class="lightbox-nav-btn next" onclick="navigateLightbox(1)" aria-label="Next">❯</button>
+    </div>
+  </div>
+
+  <!-- All Photos Grid Modal -->
+  <div id="all-photos-modal" class="all-photos-modal hidden">
+    <div class="all-photos-container">
+      <div class="all-photos-header">
+        <h3>Semua 26 Kenangan Manis Kita 📸</h3>
+        <button class="all-photos-close" onclick="closeAllPhotosGrid()">✕ Tutup</button>
+      </div>
+      <div class="all-photos-grid" id="all-photos-grid">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Element -->
+  <audio id="global-audio" preload="auto">
+    <source src="assets/audio/song.m4a" type="audio/mp4">
+  </audio>
+
+  <!-- Scripts -->
+  <script src="tracks_data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
